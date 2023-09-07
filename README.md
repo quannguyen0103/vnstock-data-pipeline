@@ -35,4 +35,4 @@
  
 ### 3. Visualize stock performance
 - Load data from `Big Query` to `Looker studio` and visualize stock performance
-![Alt text](images/dashboard.PNG)
+  ![Alt text](images/dashboard.PNG)
