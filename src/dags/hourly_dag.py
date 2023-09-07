@@ -6,7 +6,7 @@ default_dag_args = {
 	"start_date": datetime.datetime(2023, 8, 12)
 	, "retries": 3
 	, "retry_delay": datetime.timedelta(minutes=5)
-	, "email": "quangcloud123@gmail.com"
+	, "email": "user@gmail.com"
 	, "email_on_failure": True
 	, "email_on_retry": True
 }
@@ -16,7 +16,7 @@ with models.DAG("process_subscribe_stock"
 	, default_args = default_dag_args) as dag:
 	for hour in range(10, 16):
 		task_id = f"load_data_{hour}"
-		bash_command = f"python3 /home/quangcloud123/vnstock/src/data_processing/stock_subscribe.py --hour={hour}"
+		bash_command = f"python3 /home/user/vnstock/src/data_processing/stock_subscribe.py --hour={hour}"
 
 		load_data = bash_operator.BashOperator(
 			task_id = task_id
