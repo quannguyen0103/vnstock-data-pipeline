@@ -12,7 +12,7 @@ def process_data(event, context):
         bq_client = bigquery.Client()
         dataset_id = "tiki"
         table_id = "new_product"
-        bq_client.project = "upheld-ellipse-387807"
+        bq_client.project = "project_id"
 
         # Define the fully-qualified table name
         table_ref = f"{bq_client.project}.{dataset_id}.{table_id}"
