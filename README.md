@@ -20,7 +20,7 @@
   - Send an alert email when a task failed
 - Hourly Airflow data pipeline: [hourly_pipeline.py](src/dags/hourly_dag.py)
   - Load and publish subscribed stock data to the `Google Pub/Sub` `vnstock` topic hourly: [load_subscribe_data.py](src/data_processing/subsribed_stock.py)
-  - If any subscribed stock drops over 10% in price, send a warning message to `Telegram` via the Telegram bot
+  - If any subscribed stock drops over 10% compared to the expected price, send a warning message to `Telegram` via the Telegram bot
   ![Alt text](images/telegram_messages.PNG)
   - Run hourly from 10 AM to 3 PM every weekday
   - Retry 3 times, each time 5 minutes apart
@@ -32,3 +32,7 @@
   - [load_daily_stock](src/cloud_functions/load_daily_stock): When new daily stock data is being uploaded to `vnstock` bucket, append it to the `stock_data` table in `Big Query`. Data sample: [stock_data](data/processed_data/stock_data.csv)
   - [load_subscribe_stock](src/cloud_functions/load_subscribed_stock): When new subscribed stock data is being uploaded to `vnstock` Pub/Sub topic, append it to the `subscribed_stock` table in `Big Query`. Data sample: [subscribed_stock](data/processed_data/subscribed_stock.csv)
   - [load_grown_stock](src/cloud_functions/load_grown_stock): When new stock data is being uploaded to `grown_stock` bucket, write truncate it to `grown_stock` table in `Big Query`. Data sample: [grown_stock](data/processed_data/grown_stock.csv)
+ 
+### 3. Visualize stock performance
+- Load data from `Big Query` to `Looker studio` and visualize stock performance
+![Alt text](images/dashboards.PNG)
