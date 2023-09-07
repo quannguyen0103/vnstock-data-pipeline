@@ -11,17 +11,18 @@
 - Create the `vnstock` topic on `Google Pub/Sub`
 
 ### 1. Load data to GCS buckets
-- Request stock data in the past 1 year through `TCBS` and `SSI` public API by using `vnstock` library and store it as `year_data.csv`: [load_year_data.py](src/data_processing/load_year_data.py)
+- Retrieve historical stock data in the past 1 year through `TCBS` and `SSI` public APIs by using `vnstock` library and store it as `year_data.csv`: [load_year_data.py](src/data_processing/load_year_data.py)
 - Migrate `year_data.csv` to the `vnstock` bucket using `bash` command: [migrate_year_data.sh](src/data_processing/migrate_year_data.sh)
 - Daily Airflow data pipeline: [daily_pipeline.py](src/dags/daily_dag.py)
-  - Request stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
+  - Retrieve historical stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
   - Migrate daily stock data to the `vnstock` bucket using `bash` command: [migrate_data.sh](src/data_processing/migrate_data.sh)
   - Calculate and select stocks with the most stable growth in the last 3 months and load it to the `grown_stock` bucket by submitting a job to `Dataproc` (Spark): [load_grown_stock.py](src/data_processing/grown_stock.py)
   - Run at 4 PM every weekday (Monday to Friday)
   - Retry 3 times, each time 5 minutes apart
   - Send an alert email when a task failed
 - Hourly Airflow data pipeline: [hourly_pipeline.py](src/dags/hourly_dag.py)
-  - Request and publish subscribed stock data to the `Google Pub/Sub` `vnstock` topic hourly: [load_subscribe_data.py](src/data_processing/subsribed_stock.py)
+  - Choose favorite stocks to subscribe to: SSI, VND, HPG, NKG, VIC, NHA, CEO, LDG, VIX
+  - Retrieve and publish historical data of subscribe stocks to the `Google Pub/Sub` `vnstock` topic hourly: [load_subscribe_data.py](src/data_processing/subsribed_stock.py)
   - If any subscribed stock drops over 10% compared to the expected price, send a warning message to `Telegram` via the Telegram bot
   - ![Alt text](images/telegram_messages.PNG)
   - Run hourly from 10 AM to 3 PM every weekday
