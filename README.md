@@ -11,9 +11,9 @@
 - Create the `vnstock` topic on `Google Pub/Sub`
 
 ### 1. Load data to GCS buckets
-- Load stock data in the past 1 year and store it as a `CSV` file in the `vnstock` bucket: [load_year_data.py](src/data_processing/load_year_data.py)
+- Load stock data in the past 1 year as a `CSV` file in the `vnstock` bucket: [load_year_data.py](src/data_processing/load_year_data.py)
 - Create an Airflow dag: [daily_pipeline.py](src/dags/daily_dag.py)
-  - Load stock data daily and store each day as a `CSV` file in the `vnstock` bucket: [load_daily_data.py](src/data_processing/load_data.py)
+  - Load stock data daily and store each day as individual `CSV` files in the `vnstock` bucket: [load_daily_data.py](src/data_processing/load_data.py)
   - Calculate and select stocks with the most stable growth in the last 3 months by submit a job to `Dataproc` (Spark): [load_growth_stock.py](src/data_processing/grown_stock.py)
   - Run at 4 PM every weekday (Monday to Friday)
   - Retry 3 times, each time 5 minutes apart
