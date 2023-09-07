@@ -82,7 +82,7 @@ result.write \
 output = "gs://dataproc-1998/vnstock/*.csv"
 df = spark.read.csv(output, header = True, inferSchema = True)
 df_pandas = df.toPandas()
-df_pandas.to_csv("gs://growth_stock/data/growth_stock.csv", index=False)
+df_pandas.to_csv("gs://grown_stock/data/grown_stock.csv", index=False)
 
 spark.stop()
 

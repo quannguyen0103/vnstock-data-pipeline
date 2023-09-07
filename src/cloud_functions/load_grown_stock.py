@@ -10,7 +10,7 @@ def process_data(event, context):
         bq_client = bigquery.Client()
         dataset_id = "vnstock"
         table_id = "grown_stock"
-        bq_client.project = "high-task-393315"
+        bq_client.project = "project_id"
 
         table_ref = f"{bq_client.project}.{dataset_id}.{table_id}"
 
