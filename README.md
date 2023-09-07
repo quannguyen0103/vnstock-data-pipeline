@@ -22,4 +22,5 @@
 ### 1. Load data
 - Load stock data in the past 1 year and store it as a `CSV` file in a GCS bucket folder: [load_year_data.py](src/data_processing/load_year_data.py)
 - Create an Airflow dag:
-  - Load stock data daily, each day store
+  - Load stock data daily and store each day as a `CSV` file in a GCS bucket folder.
+  - Calculate and select 
