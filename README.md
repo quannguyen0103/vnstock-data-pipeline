@@ -14,7 +14,7 @@
 - Retrieve historical stock data in the past 1 year through `TCBS` and `SSI` public APIs by using `vnstock` library and store it as `year_data.csv`: [load_year_data.py](src/data_processing/load_year_data.py)
 - Migrate `year_data.csv` to the `vnstock` bucket using `bash` command: [migrate_year_data.sh](src/data_processing/migrate_year_data.sh)
 - Daily Airflow data pipeline: [daily_pipeline.py](src/dags/daily_dag.py)
-  - Retrieve historical stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
+  - Retrieve stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
   - Migrate daily stock data to the `vnstock` bucket using `bash` command: [migrate_data.sh](src/data_processing/migrate_data.sh)
   - Calculate and select stocks with the most stable growth in the last 3 months and load it to the `grown_stock` bucket by submitting a job to `Dataproc` (Spark): [load_grown_stock.py](src/data_processing/grown_stock.py)
   - Run at 4 PM every weekday (Monday to Friday)
