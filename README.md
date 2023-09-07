@@ -11,7 +11,7 @@
 - Create the `vnstock` topic on `Google Pub/Sub`
 
 ### 1. Load data to GCS buckets
-- Request stock data in the past 1 year using `vnstock` library in Python and store it as `year_data.csv`: [load_year_data.py](src/data_processing/load_year_data.py)
+- Request stock data in the past 1 year through `TCBS` and `SSI` public API by using `vnstock` library and store it as `year_data.csv`: [load_year_data.py](src/data_processing/load_year_data.py)
 - Migrate `year_data.csv` to the `vnstock` bucket using `bash` command: [migrate_year_data.sh](src/data_processing/migrate_year_data.sh)
 - Daily Airflow data pipeline: [daily_pipeline.py](src/dags/daily_dag.py)
   - Request stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
