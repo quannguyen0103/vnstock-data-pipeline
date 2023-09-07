@@ -17,6 +17,7 @@
   - Retrieve stock data daily and store each day as individual `CSV` files: [load_daily_data.py](src/data_processing/load_data.py)
   - Migrate daily stock data to the `vnstock` bucket using `bash` command: [migrate_data.sh](src/data_processing/migrate_data.sh)
   - Calculate and select stocks with the most stable growth in the last 3 months and load it to the `grown_stock` bucket by submitting a job to `Dataproc` (Spark): [load_grown_stock.py](src/data_processing/grown_stock.py)
+    (Stock with stable growth: Over the past 3 months, the stock price has gone up and the fluctuation range of the MA5 line has not exceeded 5%)
   - Run at 4 PM every weekday (Monday to Friday)
   - Retry 3 times, each time 5 minutes apart
   - Send an alert email when a task failed
