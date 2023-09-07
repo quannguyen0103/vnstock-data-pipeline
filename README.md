@@ -5,7 +5,7 @@
 
 ## 0. Setup
 - Set up `Airflow` on Google Cloud VM
-- Create `GCS buckets`: `vnstock`, `growth_stock`
+- Create `GCS buckets`: `vnstock`, `grown_stock`
 - Set up a [Google Cloud connection](src/connection_configurating/cloud_connection.py) for `Airflow`
 - Configure `Airflow SMTP` to send alert emails when a task failed
 - Create the `vnstock` topic on `Google Pub/Sub`
@@ -29,5 +29,6 @@
 ### 2. Load data from GCS buckets to Big Query
 - Load `year_data.csv` to the `Big Query` table `stock_data`: [data_sample](data/processed_data/stock_data)
 - Create 3 `Cloud Functions`
-  - [load_daily_stock](src/cloud_functions/load_daily_stock): When new daily stock data is being uploaded to `vnstock` bucket, append it to the `stock_data` table in `Big Query`. Data sample: (stock_data)[data/processed_data/stock_data.csv]
-  - [load_subscribe_stock](src/cloud_functions/load_daily_stock): When new subscribed stock data is being uploaded to `vnstock` Pub/Sub topic, append it to the `subscribed_stock` table in `Big Query`. Data sample: (stock
+  - [load_daily_stock](src/cloud_functions/load_daily_stock): When new daily stock data is being uploaded to `vnstock` bucket, append it to the `stock_data` table in `Big Query`. Data sample: [stock_data](data/processed_data/stock_data.csv)
+  - [load_subscribe_stock](src/cloud_functions/load_subscribed_stock): When new subscribed stock data is being uploaded to `vnstock` Pub/Sub topic, append it to the `subscribed_stock` table in `Big Query`. Data sample: [subscribed_stock](data/processed_data/subscribed_stock.csv)
+  - [load_grown_stock](src/cloud_functions/load_grown_stock): When new stock data is being uploaded to `grown_stock` bucket, write truncate it to `grown_stock` table in `Big Query`. Data sample: [grown_stock](data/processed_data/grown_stock.csv)
