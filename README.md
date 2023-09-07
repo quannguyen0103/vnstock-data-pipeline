@@ -21,7 +21,7 @@
 - Hourly Airflow data pipeline: [hourly_pipeline.py](src/dags/hourly_dag.py)
   - Load and publish subscribed stock data to the `Google Pub/Sub` `vnstock` topic hourly: [load_subscribe_data.py](src/data_processing/subsribed_stock.py)
   - If any subscribed stock drops over 10% compared to the expected price, send a warning message to `Telegram` via the Telegram bot
-    ![Alt text](images/telegram_messages.PNG)
+  - ![Alt text](images/telegram_messages.PNG)
   - Run hourly from 10 AM to 3 PM every weekday
   - Retry 3 times, each time 5 minutes apart
   - Send an alert email when a task failed
