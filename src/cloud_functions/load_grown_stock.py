@@ -9,7 +9,7 @@ def process_data(event, context):
     if file_name.endswith(".csv"):
         bq_client = bigquery.Client()
         dataset_id = "vnstock"
-        table_id = "growth_stock"
+        table_id = "grown_stock"
         bq_client.project = "high-task-393315"
 
         table_ref = f"{bq_client.project}.{dataset_id}.{table_id}"
