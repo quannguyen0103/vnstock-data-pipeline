@@ -1,7 +1,7 @@
 # Source
 
 ## Architecture
-![Alt text](images/vnstock_architecture.PNG)
+![Alt text](images/vnstock_architecture.png)
 ## Setup
 - Set up `Airflow` on Google Cloud VM
 - Create `GCS buckets`
